@@ -37,7 +37,6 @@ class ObjectRenderer:
         self.sky_offset = (self.sky_offset + 4.5 * self.game.player.rel) % WIDTH
         self.screen.blit(self.sky_image, (-self.sky_offset, 0))
         self.screen.blit(self.sky_image, (-self.sky_offset + WIDTH, 0))
-        # floor
         pg.draw.rect(self.screen, FLOOR_COLOR, (0, HALF_HEIGHT, WIDTH, HEIGHT))
 
     def render_game_objects(self):
@@ -72,14 +71,13 @@ class ObjectHandler:
         add_npc = self.add_npc
         self.npc_positions = {}
 
-        # spawn npc
-        self.enemies = 20  # npc count
+        self.enemies = 20
         self.npc_types = [SoldierNPC, CacoDemonNPC, CyberDemonNPC]
         self.weights = [70, 20, 10]
         self.restricted_area = {(i, j) for i in range(10) for j in range(10)}
         self.spawn_npc()
 
-        # sprite map
+        # Карта спрайтов 
         add_sprite(AnimatedSprite(game))
         add_sprite(AnimatedSprite(game, pos=(1.5, 1.5)))
         add_sprite(AnimatedSprite(game, pos=(1.5, 7.5)))
